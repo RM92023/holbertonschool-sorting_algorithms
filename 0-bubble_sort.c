@@ -25,7 +25,8 @@ void swap(int *a, int *b)
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, j, k;
+
 	if (size <= 1)
 		return;
 
@@ -35,17 +36,14 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[j] > array[j + 1])
 			{
-				/* Swap the elements if they are in the wrong order */
 				swap(&array[j], &array[j + 1]);
 			}
 		}
 
-		/* Print the array after each pass */
-		printf("Pass %zu: ", i + 1);
-		for (size_t k = 0; k < size; k++)
+		for (k = 0; k < size - 1; k++)
 		{
-			printf("%d ", array[k]);
+			printf("%d, ", array[k]);
 		}
-		printf("\n");
+		printf("%d\n", array[k]);
 	}
 }
