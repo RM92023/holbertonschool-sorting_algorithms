@@ -1,21 +1,5 @@
 #include "sort.h"
 /**
- * swap - swap the elements in the method bubble
- *
- * @a: the first element
- * @b: the second element
- *
- * Return: Helper function to swap two elements in the array
- */
-void swap(int *a, int *b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-
-/**
  * bubble_sort - sort elements in ascending order
  *
  * @array: array of elements sorted
@@ -25,25 +9,26 @@ void swap(int *a, int *b)
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j, k;
+	int i, n, tmp;
 
-	if (size <= 1)
+	if (!array || size == 0)
 		return;
-
-	for (i = 0; i < size - 1; i++)
+	tmp = 0;
+	n = size - 1;
+	while (n)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		for (i = 0; i < n; i++)
 		{
-			if (array[j] > array[j + 1])
+			tmp = array[i];
+			if (tmp > array[i + 1])
 			{
-				swap(&array[j], &array[j + 1]);
+				array[i] = array[i + 1];
+				array[i + 1] = tmp;
+				print_array(array, size);
 			}
+
 		}
 
-		for (k = 0; k < size - 1; k++)
-		{
-			printf("%d, ", array[k]);
-		}
-		printf("%d\n", array[k]);
+		n -= 1;
 	}
 }
